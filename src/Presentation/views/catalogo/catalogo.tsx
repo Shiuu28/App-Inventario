@@ -1,13 +1,13 @@
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, StyleSheet, Image, TextInput, ToastAndroid, Touchable, TouchableOpacity } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/native-stack';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../../App';
 import { RoundedButton } from '../../components/RoundedButton';
 
 
 export const CategoriasScreen = () => {
-    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+    const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
     return (
         <View style={styles.container}>
@@ -23,25 +23,25 @@ export const CategoriasScreen = () => {
 
                 <View style={{ marginTop: 30 }}>
                     <RoundedButton text='FRUTAS' onPress={() =>
-                        navigation.navigate('CategoriasScreen')}>
+                        navigation.navigate('HomeScreen')}>
                     </RoundedButton>
                 </View>
 
                 <View style={{ marginTop: 30 }}>
                     <RoundedButton text='VERDURAS' onPress={() =>
-                        navigation.navigate('CategoriasScreen')}>
+                        navigation.navigate('HomeScreen')}>
                     </RoundedButton>
                 </View>
 
                 <View style={{ marginTop: 30 }}>
                     <RoundedButton text='CARNES' onPress={() =>
-                        navigation.navigate('CategoriasScreen')}>
+                        navigation.navigate('HomeScreen')}>
                     </RoundedButton>
                 </View>
 
                 <View style={{ marginTop: 30 }}>
                     <RoundedButton text='ASEO' onPress={() =>
-                        navigation.navigate('CategoriasScreen')}>
+                        navigation.navigate('HomeScreen')}>
                     </RoundedButton>
                 </View>
 

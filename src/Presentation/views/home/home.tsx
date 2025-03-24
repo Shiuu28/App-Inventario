@@ -3,20 +3,20 @@ import { StyleSheet, Text, View, Image, TextInput, ToastAndroid, Touchable, Touc
 import { RootStackParamList } from '../../../../App';
 import { useNavigation } from '@react-navigation/native';
 import { RoundedButton } from '../../components/RoundedButton';
-import { StackNavigationProp } from '@react-navigation/native-stack';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import useViewModel from './viewModel';
 import { CustomTextInput } from '../../components/CustomTextInput';
 import styles from './Styles';
 
 
-export const HomeScreen = () => {
+export const HomeScreen = () => {  
 
     const { email, password, onChange } = useViewModel();
-    const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
+    const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
     return (
 
-        <View style={styles.container}>
+        <View style={styles.container}> 
             <Image
                 source={require('../../../../assets/descarga.jpg')}
                 style={styles.imageBackground}
@@ -61,6 +61,7 @@ export const HomeScreen = () => {
                     <RoundedButton text='ENTRAR' onPress={() => {
                         console.log('Email: ' + email);
                         console.log('Password ' + password);
+                        navigation.navigate('CategoriasScreen')
                     }} />
                 </View>
 
