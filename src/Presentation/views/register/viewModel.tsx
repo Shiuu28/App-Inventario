@@ -1,6 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
+import { RegisterAuthUseCase } from '../../../Domain/useCase/auth/RegisterAuth';
 
-const RegisterViewModel = () => {
+const useRegisterViewModel = () => {
+    const [errorMessage, setErrorMessage] = useState('');
     const [values, setValues] = useState({
         name: '',
         lastname: '',
@@ -11,18 +13,61 @@ const RegisterViewModel = () => {
     });
 
     const onChange = (property: string, value: any) => {
-        setValues({...values, [property]: value});
+        setValues({ ...values, [property]: value });
+    };
+
+    const register = async () => {
+        if (!isValidForm()) {
+            const response = await RegisterAuthUseCase(values);
+            console.log('Result' + JSON.stringify(response));
+        }
+
     }
 
-    const register = () => {
-        console.log(JSON.stringify(values));
+
+    const isValidForm = (): boolean => {
+
+        if (values.name === '') {
+            setErrorMessage('El nombre es requerido');
+            return false;
+        }
+
+        if (values.lastname === '') {
+            setErrorMessage('El apellido es requerido');
+            return false;
+
+        }
+
+        if (values.email === '') {
+            setErrorMessage('El correo es requerido');
+            return false;
+        }
+
+        if (values.phone === '') {
+            setErrorMessage('El teléfono es requerido');
+            return false;
+        }
+
+        if (values.password === '') {
+            setErrorMessage('La contraseña es requerida');
+            return false;
+        }
+
+        if (values.confirmPassword === '') {
+            setErrorMessage('La confirmación de contraseña es requerida');
+            return false;
+        }
+
+        if (values.password !== values.confirmPassword) {
+            setErrorMessage('Las contraseñas no coinciden');
+            return false;
+        }
+
+        return true;
+
     }
 
-    return{
-        ...values,
-        onChange,
-        register
-    }
-}
+    return { ...values, onChange, register };
+};
 
-export default RegisterViewModel;
+export default useRegisterViewModel;

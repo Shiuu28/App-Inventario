@@ -17,7 +17,7 @@ export const CategoriasScreen = () => {
 
                 <View style={{ marginTop: 30 }}>
                     <RoundedButton text='LÁCTEOS' onPress={() =>
-                        navigation.navigate('cat_lacteos')}>
+                        navigation.navigate('catLacteos')}>
                     </RoundedButton>
                 </View>
 

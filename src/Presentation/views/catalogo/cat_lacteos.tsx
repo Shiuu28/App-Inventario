@@ -6,7 +6,7 @@ import { RoundedButton } from '../../components/RoundedButton';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 
-export const cat_lacteos = () => {
+export const catLacteos = () => {
 
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
