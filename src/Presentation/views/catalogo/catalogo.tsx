@@ -4,10 +4,13 @@ import { View, Text, StyleSheet, Image, TextInput, ToastAndroid, Touchable, Touc
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../../App';
 import { RoundedButton } from '../../components/RoundedButton';
+import useProfileInfoViewModel from './viewModel';
 
 
 export const CategoriasScreen = () => {
+
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+    const { removeSession } = useProfileInfoViewModel();
 
     return (
         <View style={styles.container}>
@@ -45,6 +48,12 @@ export const CategoriasScreen = () => {
                     </RoundedButton>
                 </View>
 
+                <View style={{ marginTop: 50 }}>
+                    <RoundedButton text='CERRAR SESIÓN' onPress={() => {
+                        removeSession();
+                        navigation.navigate('HomeScreen'); 
+                    }} />
+                </View>
 
             </View>
 

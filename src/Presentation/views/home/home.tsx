@@ -1,22 +1,28 @@
-import React, { useState } from 'react'
-import { StyleSheet, Text, View, Image, TextInput, ToastAndroid, Touchable, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState } from 'react'
+import { StyleSheet, Text, View, Image, TextInput, ToastAndroid, TouchableOpacity } from 'react-native';
 import { RootStackParamList } from '../../../../App';
 import { useNavigation } from '@react-navigation/native';
 import { RoundedButton } from '../../components/RoundedButton';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import useViewModel from './viewModel';
 import { CustomTextInput } from '../../components/CustomTextInput';
 import styles from './Styles';
+import useHomeViewModel from './viewModel';
 
 
-export const HomeScreen = () => {  
+export const HomeScreen = () => {
 
-    const { email, password, onChange } = useViewModel();
+    const { email, password, errorMessage, onChange, login } = useHomeViewModel();
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+
+    useEffect(() => {
+        if (errorMessage !== ' ') {
+            ToastAndroid.show(errorMessage, ToastAndroid.LONG);
+        }
+    }, [errorMessage]);
 
     return (
 
-        <View style={styles.container}> 
+        <View style={styles.container}>
             <Image
                 source={require('../../../../assets/descarga.jpg')}
                 style={styles.imageBackground}
@@ -58,11 +64,10 @@ export const HomeScreen = () => {
 
 
                 <View style={{ marginTop: 30 }}>
-                    <RoundedButton text='ENTRAR' onPress={() => {
-                        console.log('Email: ' + email);
-                        console.log('Password ' + password);
-                        navigation.navigate('CategoriasScreen')
-                    }} />
+                    <RoundedButton text='ENTRAR' onPress={() => { login();
+                    navigation.navigate('CategoriasScreen');
+                    }}
+                    />
                 </View>
 
 
