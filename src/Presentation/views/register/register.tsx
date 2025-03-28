@@ -1,13 +1,14 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { View, Text, ScrollView, Image, ToastAndroid } from 'react-native';
 import { RoundedButton } from '../../components/RoundedButton';
 import { CustomTextInput } from '../../components/CustomTextInput';
 import styles from './Styles';
 import useRegisterViewModel from './viewModel';
 
+
 export const RegisterScreen = () => {
 
-    const { name, lastname, phone, email, password, confirmPassword, onChange, register } = useRegisterViewModel();
+    const { name, lastname, phone, email, password, confirmPassword, onChange, register, errorMessage } = useRegisterViewModel();
 
     useEffect(() => {
         if (errorMessage !== '')

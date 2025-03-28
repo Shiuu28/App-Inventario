@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { RegisterAuthUseCase } from '../../../Domain/useCase/auth/RegisterAuth';
 
 const useRegisterViewModel = () => {
@@ -67,7 +67,7 @@ const useRegisterViewModel = () => {
 
     }
 
-    return { ...values, onChange, register };
+    return { ...values, onChange, register, errorMessage, setErrorMessage };
 };
 
 export default useRegisterViewModel;

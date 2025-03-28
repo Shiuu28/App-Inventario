@@ -1,21 +1,23 @@
 import React from "react"
-import { TouchableOpacity, Text, StyleSheet } from "react-native"
+import { TouchableOpacity, Text, StyleSheet, ViewStyle } from "react-native"
 import { MyColors } from "../../Presentation/theme/AppTheme";
 
 
 interface Props {
     text: string;
     onPress: () => void,
+    children?: React.ReactNode;
+    style?: ViewStyle;
 }
 
 
-export const RoundedButton = ({text, onPress}: Props) => {
+export const RoundedButton: React.FC<Props> = ({ text, onPress, children, style }) => {
 
     return (
         <TouchableOpacity
-            style={styles.RoundedButton}
+            style={[styles.RoundedButton, style]}
             onPress={() => onPress()}>
-
+            {children}
             <Text style={styles.textButton} >{text}</Text>
         </TouchableOpacity>
     )
@@ -30,6 +32,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: 15,
+        flexDirection: 'row',
+        display: 'flex',
+        gap: 20,
     },
 
     textButton: {

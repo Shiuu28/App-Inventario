@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import { RootStackParamList } from '../../../../App';
 import { useNavigation } from '@react-navigation/native';
 import { RoundedButton } from '../../components/RoundedButton';
@@ -7,7 +7,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { ProductOptions } from '../../components/ProductOptions';
 
 
-export const catLacteos = () => {
+export const catVerduras = () => {
 
     const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
